@@ -1,4 +1,4 @@
-domain: <domain>
+domain: nic2004:60212
 port: 3000
 local_tunnel_subdomain: <local_tunnel_subdomain>
 gateway:
