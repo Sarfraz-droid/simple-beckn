@@ -43,3 +43,40 @@ export const search = async (req: Request, res: Response) => {
 
     res.send(result.data);
 }
+
+export const select = async (req: Request, res: Response) => {
+    const json = fs.readFileSync('src/sample/bpp/response.select.json', 'utf8');
+
+    const context = await contextBuilder({
+        action: 'on_select',
+        messageId: req.body.context.message_id,
+        transactionId: req.body.context.transaction_id,
+        targetId: req.body.context.bap_id,
+        targetUri: req.body.context.bap_uri,
+    });
+
+    const data = JSON.parse(json);
+
+    data.context = {
+        ...data.context,
+        ...context
+    };
+
+    console.log(`Select Data Context : ${JSON.stringify(data.context)}`)
+
+    const header = await createAuthorizationHeader(data);
+
+    const url = `${context.bap_uri}/${data.context.action}`;
+
+    console.log(`url: ${url}`);
+
+    const result = await axios.post(url, data, {
+        headers: {
+            'Authorization': `Bearer ${header}`,
+        }
+    });
+
+    console.log(result.data);
+
+    res.send(result.data);
+}
