@@ -1,0 +1,15 @@
+domain: <domain>
+port: 3000
+local_tunnel_subdomain: <local_tunnel_subdomain>
+gateway:
+    uri: https://gateway.becknprotocol.io/bg
+    registry_uri: https://registry.becknprotocol.io/subscribers
+app:
+    id: <app_id>
+    unique_id: <unique_id>
+    uri: https://<local_tunnel_subdomain>.loca.lt
+    ttl: PT10M
+    city: std:080
+    country: IND
+    public_key: <public_key>
+    private_key: <private_key>
