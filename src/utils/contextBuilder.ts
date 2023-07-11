@@ -19,7 +19,9 @@ export const contextBuilder = async ({ transactionId, messageId, action, targetI
             bpp_uri: targetUri,
             timestamp: new Date(),
             ttl: config.app.ttl,
-            version: '1.0.0',
+            core_version: '0.9.4',
+            country: config.app.country,
+            city: config.app.city,
             message_id: messageId,
             transaction_id: transactionId,
         };
@@ -33,7 +35,9 @@ export const contextBuilder = async ({ transactionId, messageId, action, targetI
             bap_uri: targetUri,
             timestamp: new Date(),
             ttl: config.app.ttl,
-            version: '1.0.0',
+            core_version: '0.9.4',
+            country: config.app.country,
+            city: config.app.city,
             message_id: messageId,
             transaction_id: transactionId,
         };
