@@ -1,9 +1,9 @@
+import 'dotenv/config'
+
 import express from 'express';
 import { config } from './config';
-import localtunnel from 'localtunnel'
 import morgan from 'morgan'
 import { Routes } from './routes';
-
 export class App {
     public app: express.Application;
     constructor() {
@@ -28,16 +28,16 @@ export class App {
     }
 
     public async listen() {
-        const tunnel = await localtunnel({ port: config.port, subdomain: config.local_tunnel_subdomain });
+        // const tunnel = await localtunnel({ port: config.port, subdomain: config.local_tunnel_subdomain });
 
-        console.log(`tunnel url: ${tunnel.url}`)
-        tunnel.on('error', err => {
-            console.log(err);
-        })
+        // console.log(`tunnel url: ${tunnel.url}`)
+        // tunnel.on('error', err => {
+        //     console.log(err);
+        // })
 
-        tunnel.on('close', () => {
-            console.log('tunnel closed');
-        })
+        // tunnel.on('close', () => {
+        //     console.log('tunnel closed');
+        // })
 
         this.app.listen(config.port, () => {
             console.log(`App listening on the port ${config.port}`);

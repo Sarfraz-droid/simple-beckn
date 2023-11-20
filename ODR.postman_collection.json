@@ -1,0 +1,684 @@
+{
+	"info": {
+		"_postman_id": "b4c9d861-af11-41ce-a421-da993ae17c14",
+		"name": "Simple Beckn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15268335"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"arbitration-service\"\n                }\n            }\n        }\n    },\n    \"bpp_id\": \"presolv360.pulse.bpp\",\n    \"bpp_uri\": \"https://pulse-nonprod.presolv360.com\",\n    \"transaction_id\": \"8d075ee4-72ae-40e7-abdf-ee620d78254c\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/search",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Search API",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://sarfraz-alam-bap-test.loca.lt/search",
+							"protocol": "https",
+							"host": [
+								"sarfraz-alam-bap-test",
+								"loca",
+								"lt"
+							],
+							"path": [
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.9"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Jun 2023 06:58:35 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3072"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"c00-4nyK1xQRo/pdmMbU7KnZiD9cqRg\""
+						},
+						{
+							"key": "x-robots-tag",
+							"value": "noindex, nofollow, noarchive, nosnippet, nositelinksearchbox, noimageindex"
+						},
+						{
+							"key": "localtunnel-agent-ips",
+							"value": "[\"103.179.8.221\"]"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"bpp\": {\n        \"bpp_id\": \"beckn-tester-bpp\",\n        \"bpp_uri\": \"https://sarfraz-alam-bpp-test.loca.lt\",\n        \"descriptor\": {\n            \"name\": \"Transit Solutions\",\n            \"images\": [\n                \"https://transitsolutions.in/logos/logo.ico\"\n            ]\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"1\",\n            \"descriptor\": {\n                \"name\": \"Delhi Metro Rail Limited\",\n                \"images\": [\n                    \"https://delhimetrorail.com/logos/logo.ico\"\n                ]\n            },\n            \"items\": [\n                {\n                    \"id\": \"1\",\n                    \"descriptor\": {\n                        \"name\": \"Single Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/sjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"1\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"35\"\n                    }\n                },\n                {\n                    \"id\": \"2\",\n                    \"descriptor\": {\n                        \"name\": \"Single Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/sjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"2\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"65\"\n                    }\n                },\n                {\n                    \"id\": \"3\",\n                    \"descriptor\": {\n                        \"name\": \"Single Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/sjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"3\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"55\"\n                    }\n                },\n                {\n                    \"id\": \"4\",\n                    \"descriptor\": {\n                        \"name\": \"Return Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/rjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"1\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"60\"\n                    }\n                },\n                {\n                    \"id\": \"5\",\n                    \"descriptor\": {\n                        \"name\": \"Return Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/rjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"2\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"90\"\n                    }\n                },\n                {\n                    \"id\": \"6\",\n                    \"descriptor\": {\n                        \"name\": \"Return Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/rjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"3\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"100\"\n                    }\n                },\n                {\n                    \"id\": \"7\",\n                    \"descriptor\": {\n                        \"name\": \"Monthly Pass\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/mp.ico\"\n                        ]\n                    },\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"250\"\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"1\",\n                    \"start\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Dwarka Sector 10 - Blue Line\"\n                            },\n                            \"gps\": \"28.5811261,77.0548206\"\n                        }\n                    },\n                    \"end\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Patel Chowk - Yellow Line\"\n                            },\n                            \"gps\": \"28.6230972,77.2099917\"\n                        }\n                    },\n                    \"vehicle\": {\n                        \"category\": \"METRO\"\n                    },\n                    \"tags\": {\n                        \"groups/0/list/0/descriptor/name\": \"Transfers\",\n                        \"groups/0/list/0/value\": \"1\",\n                        \"groups/0/list/1/descriptor/name\": \"Duration\",\n                        \"groups/0/list/1/value\": \"60 min\"\n                    }\n                },\n                {\n                    \"id\": \"2\",\n                    \"start\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Dwarka Sector 10 - Blue Line\"\n                            },\n                            \"gps\": \"28.5811261,77.0548206\"\n                        }\n                    },\n                    \"end\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Shivaji Stadium -  Airport Express Line\"\n                            },\n                            \"gps\": \"28.6288785,77.2085895\"\n                        }\n                    },\n                    \"vehicle\": {\n                        \"category\": \"METRO\"\n                    },\n                    \"tags\": {\n                        \"groups/0/list/0/descriptor/name\": \"Transfers\",\n                        \"groups/0/list/0/value\": \"1\",\n                        \"groups/0/list/1/descriptor/name\": \"Duration\",\n                        \"groups/0/list/1/value\": \"45 min\"\n                    }\n                },\n                {\n                    \"id\": \"3\",\n                    \"start\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Dwarka Sector 21\"\n                            },\n                            \"gps\": \"9.05,12.06\"\n                        },\n                        \"time\": {\n                            \"timestamp\": \"2021-10-15T00:32:19.000Z\"\n                        }\n                    },\n                    \"end\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Shivaji Stadium\"\n                            },\n                            \"gps\": \"9.07,12.07\"\n                        },\n                        \"time\": {\n                            \"timestamp\": \"2021-10-15T00:43:21.000Z\"\n                        }\n                    },\n                    \"vehicle\": {\n                        \"category\": \"METRO\"\n                    },\n                    \"tags\": {\n                        \"groups/0/list/0/descriptor/name\": \"Transfers\",\n                        \"groups/0/list/0/value\": \"0\",\n                        \"groups/0/list/1/descriptor/name\": \"Duration\",\n                        \"groups/0/list/1/value\": \"30 min\"\n                    }\n                }\n            ],\n            \"tags\": {\n                \"groups/0/list/0/descriptor/name\": \"Timetable\",\n                \"groups/0/list/0/value\": \"https://delhimetrorail.com/timetable.html\",\n                \"groups/0/list/1/descriptor/name\": \"GTFS Schedule\",\n                \"groups/0/list/1/value\": \"https://delhimetrorail.com/gtfs\",\n                \"groups/0/list/1/display\": \"false\"\n            }\n        }\n    ]\n}"
+				},
+				{
+					"name": "Search API Copy",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://sarfraz-alam-bap-test.loca.lt/search",
+							"protocol": "https",
+							"host": [
+								"sarfraz-alam-bap-test",
+								"loca",
+								"lt"
+							],
+							"path": [
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.9"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Jun 2023 06:58:35 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3072"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"c00-4nyK1xQRo/pdmMbU7KnZiD9cqRg\""
+						},
+						{
+							"key": "x-robots-tag",
+							"value": "noindex, nofollow, noarchive, nosnippet, nositelinksearchbox, noimageindex"
+						},
+						{
+							"key": "localtunnel-agent-ips",
+							"value": "[\"103.179.8.221\"]"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"bpp\": {\n        \"bpp_id\": \"beckn-tester-bpp\",\n        \"bpp_uri\": \"https://sarfraz-alam-bpp-test.loca.lt\",\n        \"descriptor\": {\n            \"name\": \"Transit Solutions\",\n            \"images\": [\n                \"https://transitsolutions.in/logos/logo.ico\"\n            ]\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"1\",\n            \"descriptor\": {\n                \"name\": \"Delhi Metro Rail Limited\",\n                \"images\": [\n                    \"https://delhimetrorail.com/logos/logo.ico\"\n                ]\n            },\n            \"items\": [\n                {\n                    \"id\": \"1\",\n                    \"descriptor\": {\n                        \"name\": \"Single Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/sjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"1\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"35\"\n                    }\n                },\n                {\n                    \"id\": \"2\",\n                    \"descriptor\": {\n                        \"name\": \"Single Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/sjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"2\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"65\"\n                    }\n                },\n                {\n                    \"id\": \"3\",\n                    \"descriptor\": {\n                        \"name\": \"Single Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/sjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"3\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"55\"\n                    }\n                },\n                {\n                    \"id\": \"4\",\n                    \"descriptor\": {\n                        \"name\": \"Return Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/rjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"1\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"60\"\n                    }\n                },\n                {\n                    \"id\": \"5\",\n                    \"descriptor\": {\n                        \"name\": \"Return Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/rjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"2\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"90\"\n                    }\n                },\n                {\n                    \"id\": \"6\",\n                    \"descriptor\": {\n                        \"name\": \"Return Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/rjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"3\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"100\"\n                    }\n                },\n                {\n                    \"id\": \"7\",\n                    \"descriptor\": {\n                        \"name\": \"Monthly Pass\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/mp.ico\"\n                        ]\n                    },\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"250\"\n                    }\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"id\": \"1\",\n                    \"start\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Dwarka Sector 10 - Blue Line\"\n                            },\n                            \"gps\": \"28.5811261,77.0548206\"\n                        }\n                    },\n                    \"end\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Patel Chowk - Yellow Line\"\n                            },\n                            \"gps\": \"28.6230972,77.2099917\"\n                        }\n                    },\n                    \"vehicle\": {\n                        \"category\": \"METRO\"\n                    },\n                    \"tags\": {\n                        \"groups/0/list/0/descriptor/name\": \"Transfers\",\n                        \"groups/0/list/0/value\": \"1\",\n                        \"groups/0/list/1/descriptor/name\": \"Duration\",\n                        \"groups/0/list/1/value\": \"60 min\"\n                    }\n                },\n                {\n                    \"id\": \"2\",\n                    \"start\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Dwarka Sector 10 - Blue Line\"\n                            },\n                            \"gps\": \"28.5811261,77.0548206\"\n                        }\n                    },\n                    \"end\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Shivaji Stadium -  Airport Express Line\"\n                            },\n                            \"gps\": \"28.6288785,77.2085895\"\n                        }\n                    },\n                    \"vehicle\": {\n                        \"category\": \"METRO\"\n                    },\n                    \"tags\": {\n                        \"groups/0/list/0/descriptor/name\": \"Transfers\",\n                        \"groups/0/list/0/value\": \"1\",\n                        \"groups/0/list/1/descriptor/name\": \"Duration\",\n                        \"groups/0/list/1/value\": \"45 min\"\n                    }\n                },\n                {\n                    \"id\": \"3\",\n                    \"start\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Dwarka Sector 21\"\n                            },\n                            \"gps\": \"9.05,12.06\"\n                        },\n                        \"time\": {\n                            \"timestamp\": \"2021-10-15T00:32:19.000Z\"\n                        }\n                    },\n                    \"end\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Shivaji Stadium\"\n                            },\n                            \"gps\": \"9.07,12.07\"\n                        },\n                        \"time\": {\n                            \"timestamp\": \"2021-10-15T00:43:21.000Z\"\n                        }\n                    },\n                    \"vehicle\": {\n                        \"category\": \"METRO\"\n                    },\n                    \"tags\": {\n                        \"groups/0/list/0/descriptor/name\": \"Transfers\",\n                        \"groups/0/list/0/value\": \"0\",\n                        \"groups/0/list/1/descriptor/name\": \"Duration\",\n                        \"groups/0/list/1/value\": \"30 min\"\n                    }\n                }\n            ],\n            \"tags\": {\n                \"groups/0/list/0/descriptor/name\": \"Timetable\",\n                \"groups/0/list/0/value\": \"https://delhimetrorail.com/timetable.html\",\n                \"groups/0/list/1/descriptor/name\": \"GTFS Schedule\",\n                \"groups/0/list/1/value\": \"https://delhimetrorail.com/gtfs\",\n                \"groups/0/list/1/display\": \"false\"\n            }\n        }\n    ]\n}"
+				},
+				{
+					"name": "Search",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": {\n        \"intent\": {\n            \"descriptor\": {\n                \"code\": \"12313\"\n            }\n        }\n    },\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://sarfraz-bap.loca.lt/search",
+							"protocol": "https",
+							"host": [
+								"sarfraz-bap",
+								"loca",
+								"lt"
+							],
+							"path": [
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.9"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 22 Sep 2023 12:07:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1041"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"411-k9tPa5o9tcj/v0ZEnoSl/fbmQEQ\""
+						},
+						{
+							"key": "x-robots-tag",
+							"value": "noindex, nofollow, noarchive, nosnippet, nositelinksearchbox, noimageindex"
+						},
+						{
+							"key": "localtunnel-agent-ips",
+							"value": "[\"103.219.229.97\"]"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"context\": {\n            \"action\": \"/on_search\",\n            \"bpp_id\": \"sarfraz-bpp-dsep\",\n            \"bpp_uri\": \"https://sarfraz-bpp.loca.lt\",\n            \"bap_id\": \"sarfraz-bap-dsep\",\n            \"bap_uri\": \"https://sarfraz-bap.loca.lt\",\n            \"timestamp\": \"2023-09-22T12:07:25.287Z\",\n            \"ttl\": \"PT10M\",\n            \"version\": \"1.1.0\",\n            \"country\": \"IND\",\n            \"city\": \"std:080\",\n            \"message_id\": \"1c26448cc51cbda7fa798adf92395708\",\n            \"transaction_id\": \"4b572710958b851cbff93c4243b5e74a\"\n        },\n        \"catalog\": {\n            \"descriptor\": {\n                \"name\": \"Test Provider\"\n            },\n            \"provider\": [\n                {\n                    \"descriptor\": {\n                        \"name\": \"Sarfraz\",\n                        \"code\": \"12313\",\n                        \"images\": [\n                            {\n                                \"url\": \"http://localhost:4000/uploads/e653d045-0035-48ee-bd9c-4f05317dc11d.png\",\n                                \"_id\": \"650d702628fe62af13c413a5\"\n                            }\n                        ],\n                        \"media\": []\n                    },\n                    \"_id\": \"650d702628fe62af13c413a4\",\n                    \"category_id\": \"MICRO\",\n                    \"items\": [\n                        {\n                            \"descriptor\": {\n                                \"media\": [],\n                                \"images\": []\n                            },\n                            \"creator\": {\n                                \"descriptor\": {\n                                    \"media\": [],\n                                    \"images\": []\n                                }\n                            },\n                            \"price\": {\n                                \"value\": \"678\"\n                            },\n                            \"id\": \"yi7yiuhk\",\n                            \"add_ons\": [],\n                            \"cancellation_terms\": [],\n                            \"replacement_terms\": [],\n                            \"return_terms\": [],\n                            \"tags\": [],\n                            \"_id\": \"650d702628fe62af13c413a6\"\n                        }\n                    ],\n                    \"categories\": [],\n                    \"fulfillments\": [],\n                    \"payments\": [],\n                    \"locations\": [],\n                    \"offers\": [],\n                    \"tags\": [],\n                    \"__v\": 0\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Select",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": {\n        \"order\": {\n            \"items\": [\n                {\n                    \"descriptor\": {\n                        \"media\": [],\n                        \"images\": []\n                    },\n                    \"creator\": {\n                        \"descriptor\": {\n                            \"media\": [],\n                            \"images\": []\n                        }\n                    },\n                    \"price\": {\n                        \"value\": \"678\"\n                    },\n                    \"id\": \"yi7yiuhk\",\n                    \"add_ons\": [],\n                    \"cancellation_terms\": [],\n                    \"replacement_terms\": [],\n                    \"return_terms\": [],\n                    \"tags\": [],\n                    \"_id\": \"650d702628fe62af13c413a6\"\n                }\n            ],\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"Sarfraz\",\n                    \"code\": \"12313\",\n                    \"images\": [\n                        {\n                            \"url\": \"http://localhost:4000/uploads/e653d045-0035-48ee-bd9c-4f05317dc11d.png\",\n                            \"_id\": \"650d702628fe62af13c413a5\"\n                        }\n                    ],\n                    \"media\": []\n                },\n                \"_id\": \"650d702628fe62af13c413a4\",\n                \"category_id\": \"MICRO\",\n                \"items\": [\n                    {\n                        \"descriptor\": {\n                            \"media\": [],\n                            \"images\": []\n                        },\n                        \"creator\": {\n                            \"descriptor\": {\n                                \"media\": [],\n                                \"images\": []\n                            }\n                        },\n                        \"price\": {\n                            \"value\": \"678\"\n                        },\n                        \"id\": \"yi7yiuhk\",\n                        \"add_ons\": [],\n                        \"cancellation_terms\": [],\n                        \"replacement_terms\": [],\n                        \"return_terms\": [],\n                        \"tags\": [],\n                        \"_id\": \"650d702628fe62af13c413a6\"\n                    }\n                ],\n                \"categories\": [],\n                \"fulfillments\": [],\n                \"payments\": [],\n                \"locations\": [],\n                \"offers\": [],\n                \"tags\": [],\n                \"__v\": 0\n            }\n        }\n    },\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/select",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"select"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order\": {\n        \"item\": {\n            \"id\": \"1\"\n        }\n    },\n    \"bpp_id\":\"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/select",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"select"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.9"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Jun 2023 08:11:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1289"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"509-+0dARsi+xBG5+19wvigi16a9jWc\""
+						},
+						{
+							"key": "x-robots-tag",
+							"value": "noindex, nofollow, noarchive, nosnippet, nositelinksearchbox, noimageindex"
+						},
+						{
+							"key": "localtunnel-agent-ips",
+							"value": "[\"103.179.8.221\"]"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"bpp\": {\n            \"bpp_id\": \"beckn-tester-bpp\",\n            \"bpp_uri\": \"https://sarfraz-alam-bpp-test.loca.lt\"\n        },\n        \"order\": {\n            \"id\": \"123413\",\n            \"items\": [\n                {\n                    \"id\": \"3\",\n                    \"descriptor\": {\n                        \"name\": \"Single Journey Ticket\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/icons/sjt.ico\"\n                        ]\n                    },\n                    \"fulfillment_id\": \"3\",\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"55\"\n                    },\n                    \"tags\": {\n                        \"groups/0/list/0/descriptor/name\": \"Validity\",\n                        \"groups/0/list/0/value\": \"24 hours from the time of purchase\"\n                    }\n                }\n            ],\n            \"provider\": {\n                \"id\": \"1\",\n                \"descriptor\": {\n                    \"name\": \"Delhi Metro Rail Limited\",\n                    \"images\": [\n                        \"https://delhimetrorail.com/logos/logo.ico\"\n                    ]\n                }\n            },\n            \"fulfillment\": {\n                \"id\": \"3\",\n                \"start\": {\n                    \"location\": {\n                        \"descriptor\": {\n                            \"name\": \"Dwarka Sector 21\"\n                        },\n                        \"gps\": \"9.05,12.06\"\n                    },\n                    \"time\": {\n                        \"timestamp\": \"2021-10-15T00:32:19.000Z\"\n                    }\n                },\n                \"end\": {\n                    \"location\": {\n                        \"descriptor\": {\n                            \"name\": \"Shivaji Stadium\"\n                        },\n                        \"gps\": \"9.07,12.07\"\n                    },\n                    \"time\": {\n                        \"timestamp\": \"2021-10-15T00:43:21.000Z\"\n                    }\n                },\n                \"vehicle\": {\n                    \"category\": \"METRO\"\n                },\n                \"tags\": {\n                    \"groups/0/list/0/descriptor/name\": \"Transfers\",\n                    \"groups/0/list/0/value\": \"0\",\n                    \"groups/0/list/1/descriptor/name\": \"Duration\",\n                    \"groups/0/list/1/value\": \"30 min\"\n                }\n            },\n            \"quote\": {\n                \"price\": {\n                    \"value\": \"60.5\",\n                    \"currency\": \"INR\"\n                },\n                \"breakup\": [\n                    {\n                        \"title\": \"Single Journey Ticket X 1\",\n                        \"price\": {\n                            \"currency\": \"INR\",\n                            \"value\": \"55\"\n                        }\n                    },\n                    {\n                        \"title\": \"CGST @ 5%\",\n                        \"price\": {\n                            \"currency\": \"INR\",\n                            \"value\": \"2.75\"\n                        }\n                    },\n                    {\n                        \"title\": \"SGST @ 5%\",\n                        \"price\": {\n                            \"currency\": \"INR\",\n                            \"value\": \"2.75\"\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Init",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": {\n        \"order\": {\n            \"itmes\": [\n                {\n                    \"descriptor\": {\n                        \"media\": [],\n                        \"images\": []\n                    },\n                    \"creator\": {\n                        \"descriptor\": {\n                            \"media\": [],\n                            \"images\": []\n                        }\n                    },\n                    \"price\": {\n                        \"value\": \"678\"\n                    },\n                    \"id\": \"yi7yiuhk\",\n                    \"add_ons\": [],\n                    \"cancellation_terms\": [],\n                    \"replacement_terms\": [],\n                    \"return_terms\": [],\n                    \"tags\": [],\n                    \"_id\": \"650d702628fe62af13c413a6\"\n                }\n            ],\n            \"offers\": [],\n            \"quote\": {\n                \"id\": \"wrew6c5\",\n                \"price\": {\n                    \"value\": \"300\"\n                }\n            },\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"Sarfraz\",\n                    \"code\": \"12313\",\n                    \"images\": [\n                        {\n                            \"url\": \"http://localhost:4000/uploads/e653d045-0035-48ee-bd9c-4f05317dc11d.png\",\n                            \"_id\": \"650d702628fe62af13c413a5\"\n                        }\n                    ],\n                    \"media\": []\n                },\n                \"_id\": \"650d702628fe62af13c413a4\",\n                \"category_id\": \"MICRO\",\n                \"items\": [\n                    {\n                        \"descriptor\": {\n                            \"media\": [],\n                            \"images\": []\n                        },\n                        \"creator\": {\n                            \"descriptor\": {\n                                \"media\": [],\n                                \"images\": []\n                            }\n                        },\n                        \"price\": {\n                            \"value\": \"678\"\n                        },\n                        \"id\": \"yi7yiuhk\",\n                        \"add_ons\": [],\n                        \"cancellation_terms\": [],\n                        \"replacement_terms\": [],\n                        \"return_terms\": [],\n                        \"tags\": [],\n                        \"_id\": \"650d702628fe62af13c413a6\"\n                    }\n                ],\n                \"categories\": [],\n                \"fulfillments\": [],\n                \"payments\": [],\n                \"locations\": [],\n                \"offers\": [],\n                \"tags\": [],\n                \"__v\": 0\n            }\n        }\n    },\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/init",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"init"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Init",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": {\n        \"order\": {\n            \"item\": {\n                \"id\": \"1\"\n            }\n        }\n    },\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/init",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"init"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.9"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Jul 2023 12:17:11 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2140"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"85c-Bza8VlT1gRrYKJRy4LgZz7J9J+0\""
+						},
+						{
+							"key": "x-robots-tag",
+							"value": "noindex, nofollow, noarchive, nosnippet, nositelinksearchbox, noimageindex"
+						},
+						{
+							"key": "localtunnel-agent-ips",
+							"value": "[\"103.77.0.169\"]"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"context\": {\n            \"domain\": \"nic2004:60212\",\n            \"country\": \"IND\",\n            \"city\": \"std:080\",\n            \"action\": \"on_init\",\n            \"core_version\": \"0.9.4\",\n            \"bap_id\": \"beckn-tester-bap\",\n            \"bap_uri\": \"https://sarfraz-alam-bap-test.loca.lt\",\n            \"bpp_id\": \"beckn-tester-bpp\",\n            \"bpp_uri\": \"https://sarfraz-alam-bpp-test.loca.lt\",\n            \"transaction_id\": \"e9f85b875d05f6b241ffae19ad4ef46a\",\n            \"message_id\": \"b6ef894aceefd2b757cb92d983964fa8\",\n            \"timestamp\": \"2023-07-11T12:17:09.189Z\",\n            \"ttl\": \"PT10M\"\n        },\n        \"message\": {\n            \"order\": {\n                \"items\": [\n                    {\n                        \"id\": \"3\",\n                        \"descriptor\": {\n                            \"name\": \"Single Journey Ticket\",\n                            \"images\": [\n                                \"https://delhimetrorail.com/icons/sjt.ico\"\n                            ]\n                        },\n                        \"fulfillment_id\": \"3\",\n                        \"price\": {\n                            \"currency\": \"INR\",\n                            \"value\": \"55\"\n                        },\n                        \"tags\": {\n                            \"groups/0/list/0/descriptor/name\": \"Validity\",\n                            \"groups/0/list/0/value\": \"24 hours from the time of purchase\"\n                        }\n                    }\n                ],\n                \"provider\": {\n                    \"id\": \"1\",\n                    \"descriptor\": {\n                        \"name\": \"Delhi Metro Rail Limited\",\n                        \"images\": [\n                            \"https://delhimetrorail.com/logos/logo.ico\"\n                        ]\n                    }\n                },\n                \"fulfillment\": {\n                    \"id\": \"3\",\n                    \"start\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Dwarka Sector 21\"\n                            },\n                            \"gps\": \"9.05,12.06\"\n                        },\n                        \"time\": {\n                            \"timestamp\": \"2021-10-15T00:32:19.000Z\"\n                        },\n                        \"instructions\": {\n                            \"description\": \"Show this ticket at the QR code scanner at the entry gate. If the QR code scanner is not present, show this at the ticket counter to get your token\"\n                        }\n                    },\n                    \"end\": {\n                        \"location\": {\n                            \"descriptor\": {\n                                \"name\": \"Shivaji Stadium\"\n                            },\n                            \"gps\": \"9.07,12.07\"\n                        },\n                        \"time\": {\n                            \"timestamp\": \"2021-10-15T00:43:21.000Z\"\n                        }\n                    },\n                    \"vehicle\": {\n                        \"category\": \"METRO\"\n                    },\n                    \"tags\": {\n                        \"groups/0/list/0/descriptor/name\": \"Transfers\",\n                        \"groups/0/list/0/value\": \"0\",\n                        \"groups/0/list/1/descriptor/name\": \"Duration\",\n                        \"groups/0/list/1/value\": \"30 min\"\n                    }\n                },\n                \"documents\": [\n                    {\n                        \"label\": \"Cancellation Terms\",\n                        \"url\": \"https://dmrc.com/fare_products/sjt/cancellation_terms.html\"\n                    }\n                ],\n                \"billing\": {\n                    \"name\": \"John Doe\",\n                    \"email\": \"john.doe@example.com\",\n                    \"phone\": \"+91-9897867564\"\n                },\n                \"quote\": {\n                    \"price\": {\n                        \"currency\": \"INR\",\n                        \"value\": \"60.5\"\n                    },\n                    \"breakup\": [\n                        {\n                            \"title\": \"Single Journey Ticket X 1\",\n                            \"price\": {\n                                \"currency\": \"INR\",\n                                \"value\": \"55\"\n                            }\n                        },\n                        {\n                            \"title\": \"CGST @ 5%\",\n                            \"price\": {\n                                \"currency\": \"INR\",\n                                \"value\": \"2.75\"\n                            }\n                        },\n                        {\n                            \"title\": \"SGST @ 5%\",\n                            \"price\": {\n                                \"currency\": \"INR\",\n                                \"value\": \"2.75\"\n                            }\n                        }\n                    ]\n                },\n                \"payment\": {\n                    \"type\": \"ON-ORDER\",\n                    \"uri\": \"https://pay.razorpay.com?amt=60.5&cur=INR&ref=24566345563\",\n                    \"tl_method\": \"http/get\",\n                    \"status\": \"NOT-PAID\"\n                }\n            }\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Confirm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": {\n        \"order\": {\n            \"itmes\": [\n                {\n                    \"descriptor\": {\n                        \"media\": [],\n                        \"images\": []\n                    },\n                    \"creator\": {\n                        \"descriptor\": {\n                            \"media\": [],\n                            \"images\": []\n                        }\n                    },\n                    \"price\": {\n                        \"value\": \"200\"\n                    },\n                    \"id\": \"15312\",\n                    \"add_ons\": [],\n                    \"cancellation_terms\": [],\n                    \"replacement_terms\": [],\n                    \"return_terms\": [],\n                    \"tags\": [],\n                    \"_id\": \"64ea055b307fdf578e8c3b7b\"\n                }\n            ],\n            \"offers\": [],\n            \"quote\": {\n                \"id\": \"bjhnsyv\",\n                \"price\": {\n                    \"value\": \"500\"\n                }\n            },\n            \"provider\": {\n                \"descriptor\": {\n                    \"name\": \"Sarfraz\",\n                    \"code\": \"sarfraz\",\n                    \"images\": [\n                        {\n                            \"url\": \"http://localhost:4000/uploads/27cec9a4-6966-4265-b74a-5842e4a417f8.jpg\",\n                            \"_id\": \"64ea055b307fdf578e8c3b7a\"\n                        }\n                    ],\n                    \"media\": []\n                },\n                \"_id\": \"64ea055b307fdf578e8c3b79\",\n                \"category_id\": \"AUTO\",\n                \"items\": [\n                    {\n                        \"descriptor\": {\n                            \"media\": [],\n                            \"images\": []\n                        },\n                        \"creator\": {\n                            \"descriptor\": {\n                                \"media\": [],\n                                \"images\": []\n                            }\n                        },\n                        \"price\": {\n                            \"value\": \"200\"\n                        },\n                        \"id\": \"15312\",\n                        \"add_ons\": [],\n                        \"cancellation_terms\": [],\n                        \"replacement_terms\": [],\n                        \"return_terms\": [],\n                        \"tags\": [],\n                        \"_id\": \"64ea055b307fdf578e8c3b7b\"\n                    },\n                    {\n                        \"descriptor\": {\n                            \"media\": [],\n                            \"images\": []\n                        },\n                        \"creator\": {\n                            \"descriptor\": {\n                                \"media\": [],\n                                \"images\": []\n                            }\n                        },\n                        \"price\": {\n                            \"value\": \"600\"\n                        },\n                        \"id\": \"686421\",\n                        \"add_ons\": [],\n                        \"cancellation_terms\": [],\n                        \"replacement_terms\": [],\n                        \"return_terms\": [],\n                        \"tags\": [],\n                        \"_id\": \"64ea055b307fdf578e8c3b7c\"\n                    }\n                ],\n                \"categories\": [],\n                \"fulfillments\": [],\n                \"payments\": [],\n                \"locations\": [],\n                \"offers\": [],\n                \"tags\": [],\n                \"__v\": 0\n            }\n        }\n    },\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"transaction_id\": \"887435dfc7814002ccb725b5937da7aa\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/confirm",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"confirm"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Confirm",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"_id\": \"64cd4bc46b9e3125fb771106\"\n            },\n            \"items\": [{\n                \"id\": \"13497dkhi88678\"\n            }],\n            \"fulfillments\": [\n                {\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"12.23, 20.322\"\n                            }\n                        },\n                        {\n                            \"location\": {\n                                \"gps\": \"12.23, 20.322\"\n                            }\n                        }\n                    ]\n                }\n            ],\n            \"payments\": [\n                {\n                    \"collected_by\": \"BPP\",\n                    \"status\": \"NOT_PAID\"\n                }\n            ],\n            \"quote\": {\n                \"id\": \"znoqrq0\",\n                \"price\": {\n                    \"value\": \"300\"\n                }\n            }\n        }\n    },\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/confirm",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.9"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 15 Aug 2023 11:36:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1171"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"493-QLrUG58kgUKKvfngtaXk1L0rZNI\""
+						},
+						{
+							"key": "x-robots-tag",
+							"value": "noindex, nofollow, noarchive, nosnippet, nositelinksearchbox, noimageindex"
+						},
+						{
+							"key": "localtunnel-agent-ips",
+							"value": "[\"103.219.229.146\"]"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"context\": {\n            \"action\": \"/on_confirm\",\n            \"bpp_id\": \"sarfraz-bpp-dsep\",\n            \"bpp_uri\": \"https://sarfraz-bpp.loca.lt\",\n            \"bap_id\": \"sarfraz-bap-dsep\",\n            \"bap_uri\": \"https://sarfraz-bap.loca.lt\",\n            \"timestamp\": \"2023-08-15T11:36:11.053Z\",\n            \"ttl\": \"PT10M\",\n            \"version\": \"1.1.0\",\n            \"country\": \"IND\",\n            \"city\": \"std:080\",\n            \"message_id\": \"1d261c42238d840a6f18be1d0ccb6eb7\",\n            \"transaction_id\": \"8b561cb2427b8ea3e30d9a500028342f\"\n        },\n        \"message\": {\n            \"order\": {\n                \"itmes\": [\n                    {\n                        \"id\": \"13497dkhi88678\"\n                    }\n                ],\n                \"offers\": [],\n                \"provider\": {\n                    \"descriptor\": {\n                        \"name\": \"Sarfraz Alam\",\n                        \"code\": \"sarfraz-alam\",\n                        \"images\": [\n                            {\n                                \"url\": \"http://localhost:4000/uploads/bef35672-f991-4580-bd93-0d797a9a24a9.jpg\",\n                                \"_id\": \"64d9cbf8ee5fc8102416d52c\"\n                            }\n                        ],\n                        \"media\": []\n                    },\n                    \"_id\": \"64cd4bc46b9e3125fb771106\",\n                    \"category_id\": \"AUTO\",\n                    \"fulfillments\": [],\n                    \"payments\": [],\n                    \"items\": [\n                        {\n                            \"descriptor\": {\n                                \"media\": [],\n                                \"images\": []\n                            },\n                            \"creator\": {\n                                \"descriptor\": {\n                                    \"media\": [],\n                                    \"images\": []\n                                }\n                            },\n                            \"price\": {\n                                \"value\": \"200\"\n                            },\n                            \"id\": \"13497dkhi88678\",\n                            \"add_ons\": [],\n                            \"cancellation_terms\": [],\n                            \"replacement_terms\": [],\n                            \"return_terms\": [],\n                            \"tags\": [],\n                            \"_id\": \"64d9cbf8ee5fc8102416d52d\"\n                        }\n                    ],\n                    \"categories\": [],\n                    \"locations\": [\n                        {\n                            \"descriptor\": {\n                                \"media\": [],\n                                \"images\": []\n                            },\n                            \"gps\": \"24.12432, 32.12\",\n                            \"_id\": \"64db424880a5eb80e807f247\"\n                        }\n                    ],\n                    \"offers\": [],\n                    \"tags\": [],\n                    \"__v\": 0\n                }\n            }\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": {\n        \"order_id\": \"64ea05e5307fdf578e8c3b99\"\n    },\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\"\n    // \"transaction_id\" : \"12b5b217fbe319faa55eab6efe671a7f\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/status",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Confirm",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"_id\": \"64cd4bc46b9e3125fb771106\"\n            },\n            \"items\": [{\n                \"id\": \"13497dkhi88678\"\n            }],\n            \"fulfillments\": [\n                {\n                    \"stops\": [\n                        {\n                            \"location\": {\n                                \"gps\": \"12.23, 20.322\"\n                            }\n                        },\n                        {\n                            \"location\": {\n                                \"gps\": \"12.23, 20.322\"\n                            }\n                        }\n                    ]\n                }\n            ],\n            \"payments\": [\n                {\n                    \"collected_by\": \"BPP\",\n                    \"status\": \"NOT_PAID\"\n                }\n            ],\n            \"quote\": {\n                \"id\": \"znoqrq0\",\n                \"price\": {\n                    \"value\": \"300\"\n                }\n            }\n        }\n    },\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/confirm",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.9"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 15 Aug 2023 11:36:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1171"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"493-QLrUG58kgUKKvfngtaXk1L0rZNI\""
+						},
+						{
+							"key": "x-robots-tag",
+							"value": "noindex, nofollow, noarchive, nosnippet, nositelinksearchbox, noimageindex"
+						},
+						{
+							"key": "localtunnel-agent-ips",
+							"value": "[\"103.219.229.146\"]"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"context\": {\n            \"action\": \"/on_confirm\",\n            \"bpp_id\": \"sarfraz-bpp-dsep\",\n            \"bpp_uri\": \"https://sarfraz-bpp.loca.lt\",\n            \"bap_id\": \"sarfraz-bap-dsep\",\n            \"bap_uri\": \"https://sarfraz-bap.loca.lt\",\n            \"timestamp\": \"2023-08-15T11:36:11.053Z\",\n            \"ttl\": \"PT10M\",\n            \"version\": \"1.1.0\",\n            \"country\": \"IND\",\n            \"city\": \"std:080\",\n            \"message_id\": \"1d261c42238d840a6f18be1d0ccb6eb7\",\n            \"transaction_id\": \"8b561cb2427b8ea3e30d9a500028342f\"\n        },\n        \"message\": {\n            \"order\": {\n                \"itmes\": [\n                    {\n                        \"id\": \"13497dkhi88678\"\n                    }\n                ],\n                \"offers\": [],\n                \"provider\": {\n                    \"descriptor\": {\n                        \"name\": \"Sarfraz Alam\",\n                        \"code\": \"sarfraz-alam\",\n                        \"images\": [\n                            {\n                                \"url\": \"http://localhost:4000/uploads/bef35672-f991-4580-bd93-0d797a9a24a9.jpg\",\n                                \"_id\": \"64d9cbf8ee5fc8102416d52c\"\n                            }\n                        ],\n                        \"media\": []\n                    },\n                    \"_id\": \"64cd4bc46b9e3125fb771106\",\n                    \"category_id\": \"AUTO\",\n                    \"fulfillments\": [],\n                    \"payments\": [],\n                    \"items\": [\n                        {\n                            \"descriptor\": {\n                                \"media\": [],\n                                \"images\": []\n                            },\n                            \"creator\": {\n                                \"descriptor\": {\n                                    \"media\": [],\n                                    \"images\": []\n                                }\n                            },\n                            \"price\": {\n                                \"value\": \"200\"\n                            },\n                            \"id\": \"13497dkhi88678\",\n                            \"add_ons\": [],\n                            \"cancellation_terms\": [],\n                            \"replacement_terms\": [],\n                            \"return_terms\": [],\n                            \"tags\": [],\n                            \"_id\": \"64d9cbf8ee5fc8102416d52d\"\n                        }\n                    ],\n                    \"categories\": [],\n                    \"locations\": [\n                        {\n                            \"descriptor\": {\n                                \"media\": [],\n                                \"images\": []\n                            },\n                            \"gps\": \"24.12432, 32.12\",\n                            \"_id\": \"64db424880a5eb80e807f247\"\n                        }\n                    ],\n                    \"offers\": [],\n                    \"tags\": [],\n                    \"__v\": 0\n                }\n            }\n        }\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://sarfraz-bap.loca.lt",
+			"type": "string"
+		},
+		{
+			"key": "bpp_id",
+			"value": "sarfraz-bpp-dsep",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "bpp_uri",
+			"value": "https://sarfraz-bpp.loca.lt",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "bap_uri",
+			"value": "https://sarfraz-bap.loca.lt",
+			"type": "string"
+		},
+		{
+			"key": "bpp_uri",
+			"value": "https://pulse-nonprod.presolv360.com/",
+			"type": "string"
+		},
+		{
+			"key": "bpp_id",
+			"value": "presolv360.pulse.bpp",
+			"type": "string"
+		}
+	]
+}
