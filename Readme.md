@@ -15,6 +15,7 @@ Node Version tested: `v16.20.0`
   - Copy the `bpp.example.yaml` and rename to `bpp.yaml` if you are running the bpp
   - Copy the `bap.example.yaml` and rename to `bap.yaml` if you are running the bap
   - Update the **yaml** files with the correct values.
+  - Either run your redis server at `localhost:6379` or add your REDIS_HOST & REDIS_PORT in .env file.
 
 #### Exposing the port
 - If you are running the bpp, expose the port `3000` and if you are running the bap, expose the port `3001`.
