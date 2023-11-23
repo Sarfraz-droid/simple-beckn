@@ -1,113 +1,160 @@
 import { Response, Request } from "express";
-import { contextBuilder } from "@/utils/contextBuilder"
-import crypto from "crypto"
+import { contextBuilder } from "@/utils/contextBuilder";
+import crypto from "crypto";
 import { createAuthorizationHeader } from "@/utils/auth";
 import { config } from "@/config";
-import axios from 'axios'
+import axios from "axios";
 import { client } from "@/db";
+import { BECKN_ACTION, BECKN_STATUS } from "@/utils/constant";
+import path from "path";
+import { subscriberLookup } from "@/services/beckn.service";
 
-export const EVENT = ({
-    action,
-}: {
-    action: string
-}) => async (req: Request, res: Response) => {
-
-    try {
-        const context = await contextBuilder({
-            action: action,
-            targetId: req.body.bpp_id,
-            targetUri: req.body.bpp_uri,
-            messageId: crypto.randomBytes(16).toString("hex"),
-            transactionId: req.body.transaction_id || crypto.randomBytes(16).toString("hex"),
-        });
+export const EVENT =
+    ({ action }: { action: string }) =>
+    async (req: Request, res: Response) => {
+        try {
 
 
-        const body = {
-            context,
-            message: req.body.message
-        };
-
-        const header = await createAuthorizationHeader(body);
-
-        console.log(`Header:  ${header}`);
-
-        const url = `${context.bpp_uri != undefined ? context.bpp_uri : config.gateway.uri}/${context.action}`;
-
-        console.log(`url: ${url}`);
-
-        console.log(`Body: ${JSON.stringify(body)}`);
-
-        await axios.post(url, body, {
-            headers: {
-                'Authorization': `Bearer ${header}`,
+            let paths = [];
+            if (req.body.bpp_id == undefined) {
+                paths = await subscriberLookup();
+            } else {
+                paths = [{
+                    subscriber_url: req.body.bpp_uri,
+                    status: BECKN_STATUS.SUBSCRIBED,
+                    subscriber_id: req.body.bpp_id
+                }];
             }
-        }).then((response) =>{
-            console.log(response.data)
-        })
 
-        setTimeout(async () => {
-            try {
-                console.log(`Get data from redis: ${context.transaction_id}`)
-                const data = await client.get(`${action}:TRANSACTION:${context.transaction_id}`);
+            const transaction_id = req.body.transaction_id || crypto.randomBytes(16).toString("hex");
 
-                if (data == null) {
-                    res.send({
-                        data: []
-                    })
-                    return;
-                }
 
-                res.send({
-                    data: JSON.parse(data || '{}')
-                });
-            } catch (error) {   
-                console.log(error)
-                res.send({
-                    data: []
+            await Promise.all(
+                paths.map(async (_path: any) => {
+                    try {
+                        if(_path.status != BECKN_STATUS.SUBSCRIBED) return;
+                        
+                        const _context = await contextBuilder({
+                            action: action,
+                            targetId: _path.subscriber_id,
+                            targetUri: _path.subscriber_url,
+                            messageId: crypto.randomBytes(16).toString("hex"),
+                            transactionId: transaction_id,
+                        });
+                        
+                        const _body = {
+                            context: _context,
+                            message: req.body.message,
+                        };
+                        
+                        const header = await createAuthorizationHeader(_body);
+                        
+                        
+                        const url = path.join(_path.subscriber_url, action);
+                        console.log(`Calling ${url}`);
+                        
+                        const cancelToken = axios.CancelToken.source(); 
+
+                        setTimeout(() => {
+                            cancelToken.cancel();
+                        }, 3000);
+
+                        await axios.post(url, _body, {
+                            headers: {
+                                Authorization: `Bearer ${header}`,
+                            },
+                            cancelToken: cancelToken.token
+                        });
+
+                        console.log(`Called ${_path.subscriber_url}`);
+                    } catch (error) {
+                        // console.log(error);
+                    }
                 })
-            }
-        }, 8000);
+            );
 
-    } catch (error) {
-        console.log(error)
-        res.send({
-            data: []
-        })
-    }
+            console.log(`Transaction id: ${transaction_id}`);
 
+            console.log(`Waiting for data from redis: ${transaction_id}`)
 
-}
+            setTimeout(async () => {
+                try {
+                    console.log(
+                        `Get data from redis: ${transaction_id}`
+                    );
 
-export const ON_EVENT = ({
-    type
-}: {
-    type: string
-}) => async (req: Request, res: Response) => {
+                    const key = `${action}:TRANSACTION:${transaction_id}`;
 
-    try {
-        console.log(req.body)
-        const context = req.body.context;
+                    const data = await client.get(key);
 
-        console.log(context)
+                    await client.del(key);
 
-        await client.set(`${type}:TRANSACTION:${context.transaction_id}`, JSON.stringify(req.body), );
-        client.expireAt(`${type}:TRANSACTION:${context.transaction_id}`, Math.floor(Date.now() / 1000) + 60 * 2);
+                    if (data == null) {
+                        res.send({
+                            data: [],
+                        });
+                        return;
+                    }
 
-        res.send({
-            message: {
-                ACK: {
-                    status: 'OK',
+                    res.send({
+                        data: JSON.parse(data || "{}"),
+                    });
+                } catch (error) {
+                    console.log(error);
+                    res.send({
+                        data: [],
+                    });
                 }
+            }, 8000);
+        } catch (error) {
+            console.log(error);
+            res.send({
+                data: [],
+            });
+        }
+    };
+
+export const ON_EVENT =
+    ({ type }: { type: string }) =>
+    async (req: Request, res: Response) => {
+        try {
+            // console.log(req.body);
+            const context = req.body.context;
+
+            // console.log(context);
+            const key = `${type}:TRANSACTION:${context.transaction_id}`;
+
+            const data = await client.get(key);
+
+            if (data != null) {
+                const parsedData = JSON.parse(data);
+
+                parsedData.push(req.body);
+
+                await client.set(key, JSON.stringify(parsedData), {
+                    EX: 60*2
+                });
+            } else {
+                await client.set(key, JSON.stringify([req.body]),  {
+                    EX: 60*2
+                });
             }
-        });
-    } catch (error) {
-        console.log(error)
-        res.send({
-            message: {
-                ACK: {
-                    status: 'ERROR',
-                }
-            }
-        });
-    }
-}
+
+            res.send({
+                message: {
+                    ACK: {
+                        status: "OK",
+                    },
+                },
+            });
+        } catch (error) {
+            console.log(error);
+            res.send({
+                message: {
+                    ACK: {
+                        status: "ERROR",
+                    },
+                },
+            });
+        }
+    };
