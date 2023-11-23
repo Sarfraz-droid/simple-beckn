@@ -1,3 +1,8 @@
+setup:
+	npm install -g yarn localtunnel concurrently
+	yarn
+
+
 sarfraz-bap:
 	npx concurrently \
 		"lt --port 3001 --subdomain sarfraz-bap" \
