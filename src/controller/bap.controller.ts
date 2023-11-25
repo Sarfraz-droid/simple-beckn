@@ -27,7 +27,7 @@ export const EVENT =
             }
 
             const transaction_id = req.body.transaction_id || crypto.randomBytes(16).toString("hex");
-
+            
 
             await Promise.all(
                 paths.map(async (_path: any) => {
@@ -123,7 +123,7 @@ export const ON_EVENT =
 
             // console.log(context);
             const key = `${type}:TRANSACTION:${context.transaction_id}`;
-
+            console.log(`Saving data to redis: ${key}`);
             const data = await client.get(key);
 
             if (data != null) {
