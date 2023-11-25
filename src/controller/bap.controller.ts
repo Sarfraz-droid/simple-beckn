@@ -131,13 +131,9 @@ export const ON_EVENT =
 
                 parsedData.push(req.body);
 
-                await client.set(key, JSON.stringify(parsedData), {
-                    EX: 60*60*2
-                });
+                await client.set(key, JSON.stringify(parsedData));
             } else {
-                await client.set(key, JSON.stringify([req.body]),  {
-                    EX: 60*60*2
-                });
+                await client.set(key, JSON.stringify([req.body]));
             }
 
             res.send({
