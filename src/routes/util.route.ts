@@ -31,6 +31,11 @@ router.get(utilRoutes["/config"], (req, res) => {
     res.send(config)
 })
 
+router.get("/flush-redis", async (req, res) => {
+    await client.flushAll();
+    res.send('OK')
+})
+
 serverHealth.addConnectionCheck('redis',async () => {
     const pong =  await client.ping();
 
