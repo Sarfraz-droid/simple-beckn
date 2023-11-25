@@ -4,12 +4,6 @@ Simplified version of Beckn Protocol for the purpose of understanding the protoc
 
 Only for development and testing purposes.
 
-Currently only supports `nic2004:60212` domain and the following endpoints.
-
-- /search
-- /select
-
-
 > NOTE : Other endpoints are in development
 
 ### How to run
