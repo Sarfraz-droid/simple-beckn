@@ -1,1 +1,6 @@
 info: [GET] /log 404 3ms
+info: [POST] /search 200 8472ms
+info: [POST] /on_search 200 511ms
+info: [POST] /on_search 200 479ms
+info: [POST] /on_search 200 482ms
+info: [POST] /search 200 11129ms
