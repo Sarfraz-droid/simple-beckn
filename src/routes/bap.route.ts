@@ -4,13 +4,6 @@ import { BECKN_ACTION } from '@/utils/constant';
 
 export const router = express.Router();
 
-router.use((req, res, next) => {
-    // console.log(req)
-    res.on('finish', () => {
-        console.log(`[${req.method}] ${req.originalUrl} ${res.statusCode}`)
-    });
-    next()
-})
 
 router.post('/search', BAPController.EVENT({ action: BECKN_ACTION.SEARCH }))
 router.post('/select', BAPController.EVENT({ action: BECKN_ACTION.SELECT }))

@@ -4,6 +4,9 @@ import express from 'express';
 import { config } from './config';
 import morgan from 'morgan'
 import { Routes } from './routes';
+import { router as utilRouter, utilRoutes } from "./routes/util.route"
+import fs from 'fs'
+import { logger } from './logger';
 export class App {
     public app: express.Application;
     constructor() {
@@ -12,9 +15,8 @@ export class App {
 
     public async main() {
         this.middleware();
-        this.app.get('/', (req, res) => {
-            res.send('Hello World!');
-        });
+
+        this.app.use(utilRouter)
 
         Routes.getRoutes(this.app);
 
@@ -24,7 +26,24 @@ export class App {
     public middleware() {
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
-        this.app.use(morgan('dev'));
+        const blacklistedRoutes = [...Object.values(utilRoutes), '/favicon.ico']
+        this.app.use((req, res, next) => {
+            if (blacklistedRoutes.includes(req.originalUrl)) {
+                return next();
+            }
+            const start = Date.now();
+
+            res.on('finish', () => {
+                const end = Date.now();
+                const diff = end - start;
+                console.log(`[${req.method}] ${req.originalUrl} ${res.statusCode} ${diff}ms`)
+                logger.info(`[${req.method}] ${req.originalUrl} ${res.statusCode} ${diff}ms`)
+
+            });
+            next()        
+        });
+        this.app.set('view engine', 'ejs');
+
     }
 
     public async listen() {
