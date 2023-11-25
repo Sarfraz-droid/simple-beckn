@@ -1,3 +1,4 @@
+TYPE: BAP
 domain: <domain>
 port: 3001
 local_tunnel_subdomain: <local_tunnel_subdomain>

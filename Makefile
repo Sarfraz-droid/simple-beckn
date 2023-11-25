@@ -1,7 +1,11 @@
+prod-setup:
+	npm install
+	node scripts/setup.js
+	npm run build
+
 setup:
 	npm install -g yarn localtunnel concurrently
 	yarn
-
 
 sarfraz-bap:
 	npx concurrently \

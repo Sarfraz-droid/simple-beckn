@@ -1,4 +1,10 @@
-import "module-alias/register";
+import modulealias from 'module-alias';
+import path from 'path';
+
+modulealias.addAliases({
+    '@': path.join(__dirname, 'src'),
+})
+
 import { App } from '@/app';
 import { connectRedis } from "@/db"
 

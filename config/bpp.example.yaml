@@ -1,3 +1,4 @@
+TYPE: BPP
 domain: <domain>
 port: 3000
 local_tunnel_subdomain: <local_tunnel_subdomain>
