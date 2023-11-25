@@ -4,3 +4,15 @@ info: [POST] /on_search 200 511ms
 info: [POST] /on_search 200 479ms
 info: [POST] /on_search 200 482ms
 info: [POST] /search 200 11129ms
+info: [POST] /on_search 200 8ms
+info: [POST] /on_search 200 2ms
+info: [POST] /on_search 200 2ms
+info: [POST] /search 200 10496ms
+info: [POST] /on_search 200 450ms
+info: [POST] /on_search 200 448ms
+info: [POST] /on_search 200 441ms
+info: [POST] /search 200 10952ms
+info: [POST] /on_search 200 226ms
+info: [POST] /on_search 200 224ms
+info: [POST] /on_search 200 223ms
+info: [POST] /search 200 11699ms

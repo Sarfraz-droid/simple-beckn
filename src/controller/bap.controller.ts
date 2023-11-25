@@ -83,11 +83,20 @@ export const EVENT =
                         `Get data from redis: ${transaction_id}`
                     );
 
-                    const key = `${action}:TRANSACTION:${transaction_id}`;
+                    const key = `${action}:TRANSACTION:${transaction_id}:*`;
 
-                    const data = await client.get(key);
+                    console.log(`Key: ${key}`);
 
-                    await client.del(key);
+                    const keys = await client.keys(key);
+                    const data = [];
+                    for(let i = 0; i < keys.length; i++) {
+                        const _data = await client.get(keys[i]);
+                        
+                        data.push(_data);
+                        await client.del(keys[i]);
+
+                    }
+
 
                     if (data == null) {
                         res.send({
@@ -97,7 +106,7 @@ export const EVENT =
                     }
 
                     res.send({
-                        data: JSON.parse(data || "{}"),
+                        data: data.map((d) => JSON.parse(d)),
                     });
                 } catch (error) {
                     console.log(error);
@@ -122,22 +131,10 @@ export const ON_EVENT =
             const context = req.body.context;
 
             // console.log(context);
-            const key = `${type}:TRANSACTION:${context.transaction_id}`;
+            const key = `${type}:TRANSACTION:${context.transaction_id}:${crypto.randomBytes(16).toString("hex")}}`;
             console.log(`Saving data to redis: ${key}`);
-            const data = await client.get(key);
-
-            if (data != null) {
-                const parsedData = JSON.parse(data);
-
-                parsedData.push(req.body);
-
-                console.log(parsedData.length);
-
-                await client.set(key, JSON.stringify(parsedData));
-            } else {
-                await client.set(key, JSON.stringify([req.body]));
-            }
-
+            await client.set(key, JSON.stringify(req.body));
+            
             res.send({
                 message: {
                     ACK: {
