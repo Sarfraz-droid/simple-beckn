@@ -131,6 +131,8 @@ export const ON_EVENT =
 
                 parsedData.push(req.body);
 
+                console.log(parsedData.length);
+
                 await client.set(key, JSON.stringify(parsedData));
             } else {
                 await client.set(key, JSON.stringify([req.body]));
