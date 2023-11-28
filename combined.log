@@ -16,3 +16,8 @@ info: [POST] /on_search 200 226ms
 info: [POST] /on_search 200 224ms
 info: [POST] /on_search 200 223ms
 info: [POST] /search 200 11699ms
+info: [POST] /on_search 200 300ms
+info: [POST] /on_search 200 267ms
+info: [POST] /on_search 200 266ms
+info: [POST] /on_search 200 215ms
+info: [POST] /search 200 12344ms

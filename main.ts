@@ -1,5 +1,8 @@
 import modulealias from 'module-alias';
 import path from 'path';
+import newrelic from "newrelic"
+
+// console.log(newrelic.)
 
 modulealias.addAliases({
     '@': path.join(__dirname, 'src'),
