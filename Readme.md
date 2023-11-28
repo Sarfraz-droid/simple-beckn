@@ -3,7 +3,6 @@
 >Only for development and testing purposes.
 
 
-
 ## How to run
 
 Node Version tested: `v16.20.0`
@@ -69,3 +68,5 @@ For example
 ## Running the BPP
 
 While running the BPP, you can copy and paste the mock responses of /on_search /on_select etc, at `sample/bpp/response.[action].json` files.
+=======
+> NOTE : Other endpoints are in development
