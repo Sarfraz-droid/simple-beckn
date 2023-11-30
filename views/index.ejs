@@ -1,0 +1,48 @@
+<html>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <head>
+      <title>BAP Dashboard</title>
+   </head>
+   <body
+      class="p-2 bg-black text-white font-mono"
+   >
+      <div
+         class="flex flex-col gap-2 items-center justify-center"
+      >
+         <%= data.config.TYPE %> || <%= data.config.domain %>
+         <div>
+            URI: <%= data.config.app.uri %> | APP_ID :<%= data.config.app.id %>
+            | APP_UNIQUE_ID: <%= data.config.app.unique_id %> | APP_PUBLIC_KEY : <%= data.config.app.public_key %>
+         </div>
+         <div>
+            Logs
+         </div>
+         <pre id="logs">
+            
+         </pre>
+      </div>
+
+   </body>
+   <script>
+      const refresh = () => {
+         const logs = document.getElementById('logs');
+
+         console.log('refreshing');
+
+         fetch('/logs').catch(err => {
+            console.log(err);
+         }).then(res => {
+            return res.text()
+         }).then(data => {
+            logs.innerHTML = data
+
+            setTimeout(() => {
+               refresh();
+            }, 1000);
+         });
+      }
+
+
+      refresh()
+   </script>
+</html>

@@ -3,3 +3,5 @@ config/bap.yaml
 package-lock.json
 node_modules
 yarn.lock
+.env
+dist/

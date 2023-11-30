@@ -1,81 +1,155 @@
 import { Response, Request } from "express";
-import { contextBuilder } from "@/utils/contextBuilder"
-import crypto from "crypto"
-import { SearchRequestDto } from "@/dto/bap/SearchRequestDto";
+import { contextBuilder } from "@/utils/contextBuilder";
+import crypto from "crypto";
 import { createAuthorizationHeader } from "@/utils/auth";
 import { config } from "@/config";
-import axios from 'axios'
+import axios from "axios";
 import { client } from "@/db";
+import { BECKN_ACTION, BECKN_STATUS } from "@/utils/constant";
+import path from "path";
+import { subscriberLookup } from "@/services/beckn.service";
 
-export const EVENT = ({
-    action,
-}: {
-    action: string
-}) => async (req: Request, res: Response) => {
-    const context = await contextBuilder({
-        action: action,
-        targetId: req.body.bpp_id,
-        targetUri: req.body.bpp_uri,
-        messageId: crypto.randomBytes(16).toString("hex"),
-        transactionId: crypto.randomBytes(16).toString("hex"),
-    });
+export const EVENT =
+    ({ action }: { action: string }) =>
+    async (req: Request, res: Response) => {
+        try {
 
 
-    const body = {
-        context,
-        message: req.body.message
+            let paths = [];
+            if (req.body.bpp_id == undefined) {
+                paths = await subscriberLookup();
+            } else {
+                paths = [{
+                    subscriber_url: req.body.bpp_uri,
+                    status: BECKN_STATUS.SUBSCRIBED,
+                    subscriber_id: req.body.bpp_id
+                }];
+            }
+
+            const transaction_id = req.body.transaction_id || crypto.randomBytes(16).toString("hex");
+            
+
+            await Promise.all(
+                paths.map(async (_path: any) => {
+                    try {
+                        if(_path.status != BECKN_STATUS.SUBSCRIBED) return;
+                        
+                        const _context = await contextBuilder({
+                            action: action,
+                            targetId: _path.subscriber_id,
+                            targetUri: _path.subscriber_url,
+                            messageId: crypto.randomBytes(16).toString("hex"),
+                            transactionId: transaction_id,
+                        });
+                        
+                        const _body = {
+                            context: _context,
+                            message: req.body.message,
+                        };
+                        
+                        const header = await createAuthorizationHeader(_body);
+                        
+                        
+                        const url = path.join(_path.subscriber_url, action);
+                        console.log(`Calling ${url}`);
+                        
+                        const cancelToken = axios.CancelToken.source(); 
+
+                        setTimeout(() => {
+                            cancelToken.cancel();
+                        }, 3000);
+
+                        await axios.post(url, _body, {
+                            headers: {
+                                Authorization: `Bearer ${header}`,
+                            },
+                            cancelToken: cancelToken.token
+                        });
+
+                        console.log(`Called ${_path.subscriber_url}`);
+                    } catch (error) {
+                        // console.log(error);
+                    }
+                })
+            );
+
+            console.log(`Transaction id: ${transaction_id}`);
+
+            console.log(`Waiting for data from redis: ${transaction_id}`)
+
+            setTimeout(async () => {
+                try {
+                    console.log(
+                        `Get data from redis: ${transaction_id}`
+                    );
+
+                    const key = `${action}:TRANSACTION:${transaction_id}:*`;
+
+                    console.log(`Key: ${key}`);
+
+                    const keys = await client.keys(key);
+                    const data = [];
+                    for(let i = 0; i < keys.length; i++) {
+                        const _data = await client.get(keys[i]);
+                        
+                        data.push(_data);
+                        await client.del(keys[i]);
+
+                    }
+
+
+                    if (data == null) {
+                        res.send({
+                            data: [],
+                        });
+                        return;
+                    }
+
+                    res.send({
+                        data: data.map((d) => JSON.parse(d)),
+                    });
+                } catch (error) {
+                    console.log(error);
+                    res.send({
+                        data: [],
+                    });
+                }
+            }, 8000);
+        } catch (error) {
+            console.log(error);
+            res.send({
+                data: [],
+            });
+        }
     };
 
-    const header = await createAuthorizationHeader(body);
+export const ON_EVENT =
+    ({ type }: { type: string }) =>
+    async (req: Request, res: Response) => {
+        try {
+            // console.log(req.body);
+            const context = req.body.context;
 
-    console.log(`Header:  ${header}`);
-
-    const url = `${context.bpp_uri != undefined ? context.bpp_uri : config.gateway.uri}/${context.action}`;
-
-    console.log(`url: ${url}`);
-
-    console.log(`Body: ${JSON.stringify(body)}`);
-
-    axios.post(url, body, {
-        headers: {
-            'Authorization': `Bearer ${header}`,
-        }
-    })
-
-    setTimeout(async () => {
-        console.log(`Get data from redis: ${context.transaction_id}`)
-        const data = await client.get(`${action}:TRANSACTION:${context.transaction_id}`);
-
-        if (data == null) {
+            // console.log(context);
+            const key = `${type}:TRANSACTION:${context.transaction_id}:${crypto.randomBytes(16).toString("hex")}}`;
+            console.log(`Saving data to redis: ${key}`);
+            await client.set(key, JSON.stringify(req.body));
+            
             res.send({
-                data: []
-            })
-            return;
+                message: {
+                    ACK: {
+                        status: "OK",
+                    },
+                },
+            });
+        } catch (error) {
+            console.log(error);
+            res.send({
+                message: {
+                    ACK: {
+                        status: "ERROR",
+                    },
+                },
+            });
         }
-
-        res.send({
-            data: JSON.parse(data || '{}')
-        });
-    }, 3000);
-
-
-}
-
-export const ON_EVENT = ({
-    type
-}: {
-    type: string
-}) => async (req: Request, res: Response) => {
-    const context = req.body.context;
-
-    await client.set(`${type}:TRANSACTION:${context.transaction_id}`, JSON.stringify(req.body));
-    client.expire(`${type}:TRANSACTION:${context.transaction_id}`, 10);
-
-    res.send({
-        message: {
-            ACK: {
-                status: 'OK',
-            }
-        }
-    });
-}
+    };
