@@ -1,4 +1,4 @@
-# Simple Beckn - ODR Integration
+# Simple Beckn
 
 >Only for development and testing purposes.
 
